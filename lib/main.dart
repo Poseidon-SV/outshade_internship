@@ -9,6 +9,8 @@ import 'package:outshade_internship/user_page.dart';
 
 void main() async {
   await Hive.initFlutter();
+  await Hive.openBox('database1');
+  await Hive.openBox('database2');
   runApp(const MyApp());
 }
 
@@ -32,9 +34,9 @@ class _MyAppState extends State<MyApp> {
     return 'success';
   }
 
-  void createBox() async {
-    box1 = await Hive.openBox('database1');
-    box2 = await Hive.openBox('database2');
+  void createBox() {
+    box1 = Hive.box("database1");
+    box2 = Hive.box('database2');
   }
 
   @override
